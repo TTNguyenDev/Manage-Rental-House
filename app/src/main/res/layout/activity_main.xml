@@ -1,155 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn"
+        android:text="Pass All EditText value to Next Activity"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:layout_marginTop="15dp"/>
 
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:text="Phòng 1.1"/>
-
-        <EditText
-            android:id="@+id/elec_1.1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Elec"/>
-
-        <EditText
-            android:id="@+id/water_1.1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Water"/>
-
-
-
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="20dp"
-            android:text="Phòng 3.1"/>
-
-        <EditText
-            android:id="@+id/elec_3.1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Elec"/>
-
-        <EditText
-            android:id="@+id/water_3.1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Water"/>
-
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="20dp"
-            android:text="Phòng 1.2"/>
-
-        <EditText
-            android:id="@+id/elec_1.2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Elec"/>
-
-        <EditText
-            android:id="@+id/water_1.2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Water"/>
-
-
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="20dp"
-            android:text="Phòng 2.2"/>
-
-        <EditText
-            android:id="@+id/elec_2.2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Elec"/>
-
-        <EditText
-            android:id="@+id/water_2.2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Water"/>
-
-
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="20dp"
-            android:text="Phòng 3.2"/>
-
-        <EditText
-            android:id="@+id/elec_3.2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Elec"/>
-
-        <EditText
-            android:id="@+id/water_3.2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Water"/>
-
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="20dp"
-            android:text="Phòng 4.2"/>
-
-        <EditText
-            android:id="@+id/elec_4.2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Elec"/>
-
-        <EditText
-            android:id="@+id/water_4.2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Water"/>
-    </LinearLayout>
-
-
-
-
-
-</ScrollView>
+</LinearLayout>

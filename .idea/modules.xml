@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Manage-Rental-House-RentalHouse.iml" filepath="$PROJECT_DIR$/Manage-Rental-House-RentalHouse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Manage-Rental-House-app.iml" filepath="$PROJECT_DIR$/app/Manage-Rental-House-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/RentalHouse.iml" filepath="$PROJECT_DIR$/RentalHouse.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

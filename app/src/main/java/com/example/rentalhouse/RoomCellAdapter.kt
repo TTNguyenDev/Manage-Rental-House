@@ -7,19 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class EditAdapter(context: Context, editModelArrayLists: ArrayList<EditModel>): RecyclerView.Adapter<EditAdapter.MyViewHolder>() {
+class RoomCellAdapter(context: Context, roomModelArrayLists: ArrayList<RoomModel>): RecyclerView.Adapter<RoomCellAdapter.MyViewHolder>() {
 
     private val inflater: LayoutInflater
 
     init {
         inflater = LayoutInflater.from(context)
-        editModelArrayList = editModelArrayLists
+        roomModelArrayList = roomModelArrayLists
     }
 
     companion object {
-        lateinit var editModelArrayList: ArrayList<EditModel>
+        lateinit var roomModelArrayList: ArrayList<RoomModel>
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -28,19 +29,36 @@ class EditAdapter(context: Context, editModelArrayLists: ArrayList<EditModel>): 
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.elecEditText.setText(editModelArrayList[position].getElecValue().toString())
-        holder.waterEditText.setText(editModelArrayList[position].getWaterValue().toString())
+        holder.elecEditText.setText(roomModelArrayList[position].getElecValue().toString())
+        holder.waterEditText.setText(roomModelArrayList[position].getWaterValue().toString())
+        holder.roomID.setText(roomModelArrayList[position].getID().toString())
     }
 
     override fun getItemCount(): Int {
-        return editModelArrayList.size
+        return roomModelArrayList.size
     }
 
     inner class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var elecEditText: EditText
         var waterEditText: EditText
+        var roomID: TextView
 
         init {
+            roomID = itemView.findViewById(R.id.roomID) as TextView
+            roomID.addTextChangedListener(object: TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    roomModelArrayList[adapterPosition].setID(roomID.text.toString())
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+            })
+
             elecEditText = itemView.findViewById(R.id.elecId) as EditText
             elecEditText.addTextChangedListener(object: TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -48,7 +66,7 @@ class EditAdapter(context: Context, editModelArrayLists: ArrayList<EditModel>): 
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    editModelArrayList[adapterPosition].setElecValue(elecEditText.text.toString())
+                    roomModelArrayList[adapterPosition].setElecValue(elecEditText.text.toString())
                 }
 
                 override fun afterTextChanged(s: Editable?) {
@@ -63,7 +81,7 @@ class EditAdapter(context: Context, editModelArrayLists: ArrayList<EditModel>): 
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    editModelArrayList[adapterPosition].setWaterValue(waterEditText.text.toString())
+                    roomModelArrayList[adapterPosition].setWaterValue(waterEditText.text.toString())
                 }
 
                 override fun afterTextChanged(s: Editable?) {

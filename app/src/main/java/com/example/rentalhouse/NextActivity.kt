@@ -13,9 +13,9 @@ class NextActivity: AppCompatActivity() {
 
         tv = findViewById(R.id.tv) as TextView
 
-        for (i in 0 until EditAdapter.editModelArrayList.size) {
+        for (i in 0 until RoomCellAdapter.roomModelArrayList.size) {
             tv!!.text =
-                tv!!.text.toString() + " " + EditAdapter.editModelArrayList.get(i).getElecValue() + System.getProperty(
+                tv!!.text.toString() + " " + RoomCellAdapter.roomModelArrayList.get(i).getElecValue() + System.getProperty(
                     "line.separator")
         }
     }

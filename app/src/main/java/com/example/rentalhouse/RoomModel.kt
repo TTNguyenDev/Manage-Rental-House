@@ -1,8 +1,17 @@
 package com.example.rentalhouse
 
-public class EditModel {
+public class RoomModel {
+    private var id: String? = null
     private var elecEditTextValue: String? = null
     private var watarEditTextValue: String? = null
+
+    fun getID(): String? {
+        return id
+    }
+
+    fun setID(value: String) {
+        this.id = value
+    }
 
     fun getElecValue(): String? {
        return elecEditTextValue

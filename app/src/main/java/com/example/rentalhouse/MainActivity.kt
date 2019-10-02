@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         saveBtn!!.setOnClickListener {
 
-            val helper = Helper()
+            val helper = DateTimeHelper()
             val currentDate = helper.getCurrentDate()
             //val previousMonth = helper.getPreviousMonth()
 

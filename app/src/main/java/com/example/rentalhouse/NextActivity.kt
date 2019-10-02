@@ -20,7 +20,7 @@ class NextActivity: AppCompatActivity() {
         setTitle("Manage Screen")
         tv = findViewById(R.id.tv) as TextView
 
-        val dateTimeHelper = Helper()
+        val dateTimeHelper = DateTimeHelper()
         retrievedDataWithMonth(dateTimeHelper.getCurrentDate(), thisMonthData)
         retrievedDataWithMonth(dateTimeHelper.getPreviousMonth(), previousMonthData)
     }

@@ -29,9 +29,9 @@ class RoomCellAdapter(context: Context, roomModelArrayLists: ArrayList<RoomModel
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.elecEditText.setText(roomModelArrayList[position].getElecValue().toString())
-        holder.waterEditText.setText(roomModelArrayList[position].getWaterValue().toString())
-        holder.roomID.setText(roomModelArrayList[position].getID().toString())
+        holder.elecEditText.setText(roomModelArrayList[position].elec.toString())
+        holder.waterEditText.setText(roomModelArrayList[position].water.toString())
+        holder.roomID.setText(roomModelArrayList[position].id.toString())
     }
 
     override fun getItemCount(): Int {
@@ -51,7 +51,7 @@ class RoomCellAdapter(context: Context, roomModelArrayLists: ArrayList<RoomModel
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    roomModelArrayList[adapterPosition].setID(roomID.text.toString())
+                    roomModelArrayList[adapterPosition].id = roomID.text.toString()
                 }
 
                 override fun afterTextChanged(s: Editable?) {
@@ -66,7 +66,7 @@ class RoomCellAdapter(context: Context, roomModelArrayLists: ArrayList<RoomModel
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    roomModelArrayList[adapterPosition].setElecValue(elecEditText.text.toString())
+                    roomModelArrayList[adapterPosition].elec =  elecEditText.text.toString().toIntOrNull()
                 }
 
                 override fun afterTextChanged(s: Editable?) {
@@ -81,7 +81,7 @@ class RoomCellAdapter(context: Context, roomModelArrayLists: ArrayList<RoomModel
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    roomModelArrayList[adapterPosition].setWaterValue(waterEditText.text.toString())
+                    roomModelArrayList[adapterPosition].water = waterEditText.text.toString().toIntOrNull()
                 }
 
                 override fun afterTextChanged(s: Editable?) {

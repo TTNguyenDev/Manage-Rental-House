@@ -1,33 +1,12 @@
 package com.example.rentalhouse
 
-public class RoomModel {
-    private var id: String? = null
-    private var elecEditTextValue: String? = null
-    private var watarEditTextValue: String? = null
+import com.google.firebase.database.IgnoreExtraProperties
 
-    fun getID(): String? {
-        return id
-    }
-
-    fun setID(value: String) {
-        this.id = value
-    }
-
-    fun getElecValue(): String? {
-       return elecEditTextValue
-    }
-
-    fun setElecValue(value: String) {
-        this.elecEditTextValue = value
-    }
-
-    fun getWaterValue(): String? {
-        return watarEditTextValue
-    }
-
-    fun setWaterValue(value: String) {
-        this.watarEditTextValue = value
-    }
-
-
-}
+@IgnoreExtraProperties
+data class RoomModel (
+    var id: String? = "",
+    var date: String? = "",
+    var water: Int? = 0,
+    var elec: Int? = 0,
+    var state: Boolean? = false
+)

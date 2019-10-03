@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     private var saveBtn: Button? = null
     private var manageBtn: Button? = null
     private var recyclerView: RecyclerView? = null
-    private var customAdapter: RoomCellAdapter? = null
+    private var roomCellAdapter: RoomCellAdapter? = null
     lateinit var roomModelArrayList: ArrayList<RoomModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         manageBtn = findViewById(R.id.manageBtn) as Button
 
         roomModelArrayList = populateList()
-        customAdapter = RoomCellAdapter(this, roomModelArrayList)
-        recyclerView!!.adapter = customAdapter
+        roomCellAdapter = RoomCellAdapter(this, roomModelArrayList)
+        recyclerView!!.adapter = roomCellAdapter
         recyclerView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
 
         saveBtn!!.setOnClickListener {
@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity() {
 
             Toast.makeText(this, currentDate, Toast.LENGTH_SHORT).show()
 
-            for (editModel in roomModelArrayList) {
-                writeRoomData(editModel.id!!, currentDate, editModel.elec!!.toInt(), editModel.water!!.toInt(), false)
+            for (roomModel in roomModelArrayList) {
+                writeRoomData(roomModel.id!!, currentDate, roomModel.elec!!.toInt(), roomModel.water!!.toInt(), false)
             }
         }
 
@@ -57,11 +57,11 @@ class MainActivity : AppCompatActivity() {
         var list = ArrayList<RoomModel>()
 
         kRoomIDs.forEach {
-            val editModel = RoomModel()
-            editModel.id = it
-            editModel.elec = 0
-            editModel.water = 0
-            list.add(editModel)
+            val roomModel = RoomModel()
+            roomModel.id = it
+            roomModel.elec = 0
+            roomModel.water = 0
+            list.add(roomModel)
         }
 
         return list

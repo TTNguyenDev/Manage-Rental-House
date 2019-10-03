@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+import java.lang.StringBuilder
 
 class NextActivity: AppCompatActivity() {
     private var tv: TextView? = null
@@ -45,11 +46,13 @@ class NextActivity: AppCompatActivity() {
     }
 
     fun fetchDataDidEnd() {
+        var dataManagement = StringBuilder()
         if (thisMonthData.size == 6 && previousMonthData.size == 6) {
             for (i in 0 until thisMonthData.size) {
-                Log.d("FEES" , calculateRoomFees(previousMonthData[i], thisMonthData[i]).id)
-                Log.d("FEES" , calculateRoomFees(previousMonthData[i], thisMonthData[i]).roomFee.toString())
+                dataManagement.append(showPaper(calculateRoomFees(previousMonthData[i], thisMonthData[i])))
             }
+            Log.d("XXX", dataManagement.toString())
+            tv!!.text = dataManagement.toString()
         }
     }
 
@@ -58,11 +61,44 @@ class NextActivity: AppCompatActivity() {
         var usedWater = data.water!! - previousData.water!!
         var extraFee = if (data.id == "p2_2") kWifiFee else 0
 
-        return ManageModel(data.id, usedElec * kElecFee, usedWater * kWaterFee, kRoomFees[data.id], kCleaningFee, extraFee)
+        var summary = kRoomFees[data.id]!!.toInt() + usedElec * kElecFee + usedWater * kWaterFee + kCleaningFee + extraFee
+
+        return ManageModel(
+            data.id,
+            usedElec,
+            usedWater,
+            kRoomFees[data.id],
+            kCleaningFee,
+            extraFee,
+            summary,
+            previousData,
+            data
+        )
     }
 
-    fun showPaper(manageData: ManageModel) {
+    fun showPaper(manageData: ManageModel): String {
+        val converter = RoomConverter()
 
+        var builder = """
+                      Phiếu thu tiền ${converter.roomIdToName(manageData.id!!)}
+                            ---------- @@ ----------
+            
+                        - Tiền phòng: ${manageData.roomFee}
+                        - Điện:
+                            + Tháng này: ${manageData.presentata!!.elec}
+                            + Tháng trước: ${manageData.previousData!!.elec}
+                            + Tiêu thụ: ${manageData.usedElec} x ${kElecFee} = ${manageData.usedElec!! * kElecFee}
+            
+                        - Nước:
+                            + Tháng này: ${manageData.presentata!!.water}
+                            + Tháng trước: ${manageData.previousData!!.water}
+                            + Tiêu thụ: ${manageData.usedWater} x ${kWaterFee} = ${manageData.usedWater!! * kWaterFee}
+                        ${if(manageData.extraFee != 0) "\n                        - Tiền Wifi = ${kWifiFee}" else ""}
+                        - Tiền rác: ${kCleaningFee}
+                        - TỔNG CỘNG: ${manageData.summary}
+                    (Ghi chú: điện: ${kElecFee}/kW, nước: ${kWaterFee}/khối)
+            """
+        return builder
     }
 }
 

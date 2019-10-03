@@ -29,6 +29,8 @@ class RoomCellAdapter(context: Context, roomModelArrayLists: ArrayList<RoomModel
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        var converter = RoomConverter()
+
         holder.elecEditText.setText(roomModelArrayList[position].elec.toString())
         holder.waterEditText.setText(roomModelArrayList[position].water.toString())
         holder.roomID.setText(roomModelArrayList[position].id.toString())
